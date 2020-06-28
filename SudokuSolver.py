@@ -3,7 +3,7 @@
 # This function finds the next index in the Sudoku
 # (a list of lists) that contains a zero. If a zero
 # still remains on the board it returns the index 
-# in the form row, column and if there are no zeros left
+# in the form (row, column) and if there are no zeros left
 # then it returns -1, -1
 def findZeros(sudoku):
     check = False
@@ -49,7 +49,7 @@ def printSudoku(sudoku):
 
 
 
-# Performs a seearch through every column and row
+# Performs a search through every column and row
 # of the sudoku to see if num is a valid
 # number to place at the indice sudoku[x][y].
 # Returns True if its a valid move, false otherwise
@@ -72,7 +72,7 @@ def validMove(sudoku, x, y, num):
 
 
 # Solves the sudoku board using 
-# the back tracking algorithm
+# the Backtracking Algorithm
 def solveSudoku(sudoku):
     status = False
 
