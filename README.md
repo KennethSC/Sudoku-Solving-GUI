@@ -8,7 +8,7 @@ The file SudokuSolver.py is meant to solve any solvable sudoku by implementing t
 The only requirement for this project is pygame for the GUI.
 To install pygame all you have to do is run the following command (assuming you already have pip installed) in your terminal (Mac): pip install pygame
 
-If you do not have pip installed then you can follow this link that walks you through on how to install it on MacOS or OSX: https://ahmadawais.com/install-pip-macos-os-x-python/ 
+If you don't have pip installed then you can follow this link that walks you through on installing it on MacOS or OSX: https://ahmadawais.com/install-pip-macos-os-x-python/ 
 
 
 ## Instructions
