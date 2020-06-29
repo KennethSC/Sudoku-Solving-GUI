@@ -6,4 +6,4 @@ This project is meant to solve any solvable sudoku by implementing the Backtrack
 ## Requirements
 
 The only requirement for this project is pygame for the GUI.
-To install pygame all you have to do is run the following command in your terminal (Mac): pip install pygame
+To install pygame all you have to do is run the following command (assuming you already have pip installed) in your terminal (Mac): pip install pygame
