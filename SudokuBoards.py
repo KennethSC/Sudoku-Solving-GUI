@@ -1,3 +1,9 @@
+# These are all the different sudoku boards that 
+# you can use in the GUI. Feel free to test and add any
+# other Sudoku boards. They vary in difficulty with 
+# board1 being the easiest and board9 being the hardest
+
+
 
 
 board1 = [
