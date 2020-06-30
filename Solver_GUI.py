@@ -88,9 +88,8 @@ class Cube:
 
 
 def main():
-    global FPS, FPSCLOCK, img
+    global FPS, FPSCLOCK
 
-    #img = pygame.image.load("image.img")
 
     window = pygame.display.set_mode((543, 543))
     pygame.display.set_caption("Sudoku Solver Via the Backtracking Algorithm")
@@ -107,18 +106,6 @@ def main():
         pygame.display.update()
         FPSCLOCK.tick(FPS)
 
-
-        while menu:
-
-            
-            window.blit(img, (20, 145))
-            pygame.display.update()
-
-            for event in pygame.event.get():
-
-                if event.type == pygame.KEYDOWN:
-                    menu = False
-                    break
 
 
         for event in pygame.event.get():
@@ -166,13 +153,8 @@ def main():
                     board.changeBoard(board9)
                     pygame.display.update()
 
-        
-       # window.fill((255,255,255))
-       # board.draw()
-       # pygame.display.update()
-       # FPSCLOCK.tick(FPS)
+    
 
-img = pygame.image.load("image2.img")
 main()
 pygame.quit()
 
