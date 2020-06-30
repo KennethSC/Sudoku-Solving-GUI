@@ -106,6 +106,66 @@ def main():
         pygame.display.update()
         FPSCLOCK.tick(FPS)
 
+        while menu:
+            menuFont = pygame.font.Font('freesansbold.ttf', 25)
+            line = menuFont.render('                                                                       ', True ,WHITE, BLACK)
+            textRect = line.get_rect()
+            textRect.center = (543//2, 334//2)
+            window.blit(line, textRect)
+            pygame.display.update()
+
+            line1 = menuFont.render('                           Welcome!                           ', True, WHITE, BLACK)
+            textRect1 = line1.get_rect()
+            textRect1.center = (543//2, 380//2)
+            window.blit(line1,textRect1)
+            pygame.display.update()
+
+            line8 = menuFont.render('                                                                       ', True ,WHITE, BLACK)
+            textRect8 = line.get_rect()
+            textRect8.center = (543//2, 431//2)
+            window.blit(line8, textRect8)
+            pygame.display.update()
+
+            line2 = menuFont.render('      To change sudoku boards, press        ', True, WHITE, BLACK)
+            textRect2 = line2.get_rect()
+            textRect2.center = (543//2, 483//2)
+            window.blit(line2,textRect2)
+            pygame.display.update()
+
+            line3 = menuFont.render('     any number key (1-9). To solve that      ', True, WHITE, BLACK)
+            textRect3 = line3.get_rect()
+            textRect3.center = (543 // 2, 533 // 2)
+            window.blit(line3,textRect3)
+            pygame.display.update()
+
+            line4 = menuFont.render('              board, press the spacebar.           ', True, WHITE, BLACK)
+            textRect4 = line4.get_rect()
+            textRect4.center = (543 // 2, 583 // 2)
+            window.blit(line4,textRect4)
+            pygame.display.update()
+
+            line5 = menuFont.render('                                                                       ', True, WHITE, BLACK)
+            textRect5 = line5.get_rect()
+            textRect5.center = (543 // 2, 633 // 2)
+            window.blit(line5,textRect5)
+            pygame.display.update()
+
+            line6 = menuFont.render('            Press any key to continue.             ', True, WHITE, BLACK)
+            textRect6 = line6.get_rect()
+            textRect6.center = (543 // 2, 683 // 2)            
+            window.blit(line6,textRect6)
+            pygame.display.update()
+
+            line7 = menuFont.render('                                                                       ', True ,WHITE, BLACK)
+            textRect7 = line.get_rect()
+            textRect7.center = (543//2, 733//2)
+            window.blit(line7, textRect7)
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    menu = False
+                    break
 
 
         for event in pygame.event.get():
