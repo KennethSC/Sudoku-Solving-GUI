@@ -2,8 +2,9 @@ from SudokuImport import *
 
 '''
 This python script takes in a Sudoku board (a list of lists)
-from the file SudokuImports.py and returns the formatted solved
-sudoku board to the command line
+from the file SudokuImport.py and returns the formatted solved
+sudoku board to the command line. Run this program in the same
+directory as SudokuImport.py
 '''
 
 # This function finds the next index in the Sudoku

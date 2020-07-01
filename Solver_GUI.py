@@ -1,3 +1,8 @@
+'''
+Run this file in the same directory
+as SudokuImport.py
+'''
+
 import pygame
 import time
 from SudokuImport import *
@@ -45,7 +50,6 @@ class SudoBoard():
         pygame.draw.line(self.screen, BLACK, (9 * gap, 0), (9 * gap, self.height), 5)
 
 
-
     def changeBoard(self,boardNum):
         self.cells = [[Cube(boardNum[i][j], i, j, self.height, self.width) for j in range(self.col)] for i in range(self.row)]
 
@@ -80,7 +84,6 @@ class SudoBoard():
                 pygame.time.delay(speed)
 
         return status
-
 
 
 class Cube:
