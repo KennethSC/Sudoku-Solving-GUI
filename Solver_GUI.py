@@ -53,6 +53,27 @@ class SudoBoard():
     def changeBoard(self,boardNum):
         self.cells = [[Cube(boardNum[i][j], i, j, self.height, self.width) for j in range(self.col)] for i in range(self.row)]
 
+    def solveSudoku(self):
+        status = False
+
+        row, col = findZeros(self.instance)
+    
+        if row == -1 and col == -1:
+            status = True
+            return status
+
+        for i in range(1, 10):
+            if validMove(self.instance, row, col, i):
+                self.instance[row][col] = i
+
+                status = solveSudoku(self.instance)
+                if status:
+                    return True
+
+                self.instance[row][col] = 0
+
+        return status
+
 
     def SudokuSolveGUI(self, speed):
         status = False
@@ -141,6 +162,7 @@ def main():
     speed = 1
 
     while run:
+        temp1 = board1[:]
 
         window.fill((255,255,255))
         board.draw()
@@ -164,6 +186,8 @@ def main():
                         VizStart = time.time()
                         board.SudokuSolveGUI(350)
                         VizElapsed = (time.time() - VizStart)
+                        board.solveSudoku()
+
                     elif speed == 4:
                         VizStart = time.time()
                         board.SudokuSolveGUI(100)
