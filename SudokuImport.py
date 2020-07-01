@@ -32,20 +32,58 @@ board2 = [
          [0, 0, 4, 3, 8, 5, 0, 0, 9]
 ]
 
-
 board3 = [
-         [0, 0, 1, 2, 0, 0, 8, 7, 0],
-         [0, 0, 6, 0, 8, 0, 0, 2, 4],
-         [0, 8, 0, 0, 7, 3, 0, 0, 5],
-         [6, 2, 0, 1, 3, 0, 0, 8, 0],
-         [8, 0, 0, 9, 4, 0, 0, 5, 2],
-         [5, 9, 4, 0, 0, 8, 3, 0, 6],
-         [3, 0, 9, 0, 0, 0, 5, 4, 0],
-         [1, 0, 0, 0, 9, 0, 2, 0, 8],
-         [0, 0, 0, 0, 5, 7, 0, 0, 0]
+         [2, 6, 0, 0, 0, 3, 0, 1, 5],
+         [4, 7, 0, 0, 0, 0, 0, 0, 8],
+         [5, 8, 1, 0, 0, 4, 7, 6, 3],
+         [0, 3, 0, 4, 8, 9, 0, 7, 0],
+         [0, 0, 6, 0, 0, 2, 8, 3, 0],
+         [0, 0, 8, 3, 1, 0, 0, 0, 0],
+         [6, 9, 0, 0, 0, 8, 0, 0, 7],
+         [3, 0, 0, 0, 9, 0, 2, 0, 0],
+         [0, 1, 0, 5, 0, 0, 0, 9, 6]
 ]
 
+
 board4 = [
+         [0, 2, 7, 5, 0, 1, 9, 8, 4],
+         [0, 1, 3, 0, 0, 9, 2, 0, 0],
+         [0, 0, 4, 0, 0, 7, 6, 0, 0],
+         [0, 7, 5, 4, 0, 0, 8, 3, 2],
+         [3, 0, 0, 0, 1, 8, 7, 0, 0],
+         [0, 0, 8, 0, 5, 0, 1, 0, 0],
+         [0, 3, 6, 1, 8, 5, 0, 0, 9],
+         [0, 0, 0, 0, 0, 0, 3, 7, 0],
+         [9, 8, 0, 3, 0, 0, 0, 0, 0]
+]
+
+
+board5 = [
+         [3, 0, 2, 0, 0, 7, 9, 4, 0],
+         [4, 0, 5, 9, 0, 0, 1, 0, 0],
+         [0, 0, 0, 0, 0, 4, 5, 0, 0],
+         [8, 9, 0, 0, 0, 2, 0, 0, 0],
+         [0, 2, 7, 0, 8, 1, 0, 6, 9],
+         [1, 6, 3, 0, 5, 9, 0, 0, 7],
+         [7, 0, 8, 0, 0, 0, 0, 0, 2],
+         [2, 0, 9, 6, 7, 3, 0, 1, 0],
+         [0, 5, 0, 2, 0, 0, 0, 0, 4]
+]
+
+
+board6 = [
+         [4, 0, 0, 8, 0, 1, 0, 0, 0],
+         [0, 0, 6, 3, 4, 0, 8, 0, 0],
+         [9, 8, 1, 2, 0, 0, 0, 3, 0],
+         [7, 4, 0, 1, 0, 2, 0, 5, 8],
+         [0, 0, 2, 0, 9, 0, 0, 4, 3],
+         [3, 0, 8, 7, 0, 4, 2, 0, 1],
+         [1, 0, 3, 4, 0, 0, 5, 0, 0],
+         [8, 6, 0, 0, 0, 5, 0, 0, 4],
+         [5, 0, 0, 0, 8, 0, 0, 0, 0]
+]
+
+board7 = [
          [8, 0, 1, 0, 4, 9, 0, 5, 0],
          [6, 0, 0, 0, 3, 1, 0, 0, 0],
          [0, 0, 0, 8, 2, 7, 6, 0, 3],
@@ -58,9 +96,7 @@ board4 = [
 ]
 
 
-
-
-board5 = [
+board8 = [
          [4, 0, 0, 8, 0, 1, 0, 0, 0],
          [0, 0, 6, 3, 4, 0, 8, 0, 0],
          [9, 8, 1, 2, 0, 0, 0, 3, 0],
@@ -70,6 +106,18 @@ board5 = [
          [1, 0, 3, 4, 0, 0, 5, 0, 0],
          [8, 6, 0, 0, 0, 5, 0, 0, 4],
          [5, 0, 0, 0, 8, 0, 0, 0, 0]
+]
+
+board9 = [
+         [5, 0, 0, 0, 3, 0, 4, 0, 7],
+         [3, 0, 2, 6, 0, 0, 9, 0, 0],
+         [0, 0, 7, 0, 4, 0, 0, 8, 0],
+         [0, 2, 6, 0, 0, 0, 8, 0, 1],
+         [0, 0, 0, 7, 6, 0, 0, 4, 0],
+         [4, 7, 0, 0, 0, 0, 2, 0, 0],
+         [2, 1, 0, 0, 0, 0, 7, 0, 0],
+         [0, 0, 4, 0, 0, 6, 5, 0, 0],
+         [0, 0, 0, 0, 9, 7, 0, 3, 0]
 ]
 
 
@@ -122,29 +170,6 @@ def validMove(sudoku, x, y, num):
 
     return True
 
-# Displays welcome and instructions 
-# at the very beginning.
-def Intro(screen):
-    menu = True
-
-    while menu:
-    
-        menuFont = menuFont = pygame.font.Font('freesansbold.ttf', 25) 
-        X = 543
-        Y = 334
-
-        for i in range(len(MenuList)):
-            line = menuFont.render(MenuList[i], True ,WHITE, BLACK)
-            textRect = line.get_rect()
-            textRect.center = (X//2, Y//2)
-            screen.blit(line, textRect)
-            pygame.display.update()
-            Y += 50
-
-        for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    menu = False
-                    break
 
 # Displays the time it took for the visualizer to finish
 # that sudou board
@@ -181,54 +206,10 @@ def DisplayStats(screen, VizTime):
                     running = False
                     break
 
-# Displays an error message if a user tries to 
-# solve an already solved board
-def boardError(screen):
-    error = True
-
-    while error:
-    
-        menuFont = menuFont = pygame.font.Font('freesansbold.ttf', 25) 
-        X = 543
-        Y = 334
-
-        for i in range(len(ErrorList)):
-            line = menuFont.render(ErrorList[i], True ,WHITE, BLACK)
-            textRect = line.get_rect()
-            textRect.center = (X//2, Y//2)
-            screen.blit(line, textRect)
-            pygame.display.update()
-            Y += 50
-
-        for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    error = False
-                    break
-
-
-
-MenuList = ['                                                                       ',
-            '                           Welcome!                           ',
-            '                                                                       ',
-            '      To change sudoku boards, press        ',
-            '      a number key from (1-5). To solve        ',
-            '        that board, press the spacebar.         ',
-            '                                                                       ',
-            '            Press any key to continue.             ',
-            '                                                                       ']
-
 
 TimeList = ['                                                                       ',
             '                                                                       ',
-            '      To clear the sudoku board, press        ',
-            '           a number key from (1-5).                  ',
-            '                                                                       ',
             '            Press any key to continue.             ',
-            '                                                                       ']
-
-ErrorList = ['                                                                       ',
-            '           ERROR: Press a number key           ',
-            '             from (1-5) to clear the board .        ',
             '                                                                       ']
 
 

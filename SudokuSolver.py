@@ -102,16 +102,15 @@ def solveSudoku(sudoku):
 
 
 
-
 # You could try the solveSudoku function
 # on different sudoku boards from the file 
 # SudokuImports.py, just change the number of the board
-# to any number from 1-5.The difficulty increases
+# to any number from 1-9.The difficulty increases
 # the further down the sudokus are. Make sure to 
 # run this file in the same directory as SudokuBoards.py.
 
-if solveSudoku(board5):
-    printSudoku(board5)
+if solveSudoku(board4):
+    printSudoku(board4)
 else:
     print("This sudoku has no solution")
 
