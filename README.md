@@ -5,7 +5,8 @@ The file SudokuSolver.py is meant to solve any solvable sudoku by implementing t
 
 ## Requirements
 
-__>Pygame__ 
+__Pygame:__
+ 
 To install pygame on Mac use this command in your terminal: pip install pygame
 
 ## Instructions
