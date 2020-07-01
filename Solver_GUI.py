@@ -1,11 +1,9 @@
 import pygame
-import pygame_menu
 import time
-from SudokuBoards import *
+from SudokuImport import *
 
 pygame.init()
 pygame.font.init()
-
 
 FPS = 30
 FPSCLOCK = pygame.time.Clock()
@@ -23,13 +21,10 @@ class SudoBoard():
         self.height = height
         self.width = width
         self.instance = None
-        #self.update_instance()
         self.screen = screen
-
 
     def update_instance(self):
         self.instance = [[self.cells[i][j].value for j in range(self.col)] for i in range(self.row)]
-
 
     def draw(self):
         gap = self.width / 9 
@@ -41,7 +36,6 @@ class SudoBoard():
             else:
                 pygame.draw.line(self.screen, BLACK, (0, i*gap), (self.width, i*gap), 1)
                 pygame.draw.line(self.screen, BLACK, (i * gap, 0), (i * gap, self.height), 1)
-
         
         for i in range(self.row):
             for j in range(self.col):
@@ -56,11 +50,40 @@ class SudoBoard():
         self.cells = [[Cube(boardNum[i][j], i, j, self.height, self.width) for j in range(self.col)] for i in range(self.row)]
 
 
+    def SudokuSolveGUI(self, speed):
+        status = False
+
+        row, col = findZeros(self.instance)
+
+        if row == -1 and col == -1:
+            status = True
+            return status
+
+        for i in range(1, 10):
+            if validMove(self.instance, row, col, i):
+                self.instance[row][col] = i
+                self.cells[row][col].value = i
+                self.cells[row][col].draw_change(self.screen, True)
+                self.update_instance()
+                pygame.display.update()
+                pygame.time.delay(speed)
+
+                status = self.SudokuSolveGUI(speed)
+                if status:
+                    return True
+
+                self.instance[row][col] = 0
+                self.cells[row][col].value = 0
+                self.update_instance()
+                self.cells[row][col].draw_change(self.screen, False)
+                pygame.display.update()
+                pygame.time.delay(speed)
+
+        return status
+
 
 
 class Cube:
-    #rows = 9
-    #cols = 9
 
     def __init__(self, value, row, col, width, height):
         self.value = value
@@ -69,7 +92,6 @@ class Cube:
         self.col = col
         self.width = width
         self.height = height
-
 
     def fill_In(self, screen):
         fnt = pygame.font.SysFont("sfnsdisplayblackitalicotf", 40)
@@ -86,18 +108,34 @@ class Cube:
             screen.blit(text, (x + (gap/2 - text.get_width()/2), y + (gap/2 - text.get_height()/2)))
 
 
+    def draw_change(self, screen, g=True):
+        fnt = pygame.font.SysFont("sfnsdisplayblackitalicotf", 40)
+
+        gap = self.width / 9
+        x = self.col * gap
+        y = self.row * gap
+
+        pygame.draw.rect(screen, (255, 255, 255), (x, y, gap, gap), 0)
+
+        text = fnt.render(str(self.value), 1, (0, 0, 0))
+        screen.blit(text, (x + (gap / 2 - text.get_width() / 2), y + (gap / 2 - text.get_height() / 2)))
+        if g:
+            pygame.draw.rect(screen, (0, 255, 0), (x, y, gap, gap), 3)
+        else:
+            pygame.draw.rect(screen, (255, 0, 0), (x, y, gap, gap), 3)
+
+
 
 def main():
     global FPS, FPSCLOCK
-
 
     window = pygame.display.set_mode((543, 543))
     pygame.display.set_caption("Sudoku Solver Via the Backtracking Algorithm")
     board = SudoBoard(9, 9, 540, 540, window)
     board.changeBoard(board1)
-    run = True
-    menu = True
-    
+    board.update_instance()
+    run, check = True, True
+    speed = 1
 
     while run:
 
@@ -106,67 +144,9 @@ def main():
         pygame.display.update()
         FPSCLOCK.tick(FPS)
 
-        while menu:
-            menuFont = pygame.font.Font('freesansbold.ttf', 25)
-            line = menuFont.render('                                                                       ', True ,WHITE, BLACK)
-            textRect = line.get_rect()
-            textRect.center = (543//2, 334//2)
-            window.blit(line, textRect)
-            pygame.display.update()
-
-            line1 = menuFont.render('                           Welcome!                           ', True, WHITE, BLACK)
-            textRect1 = line1.get_rect()
-            textRect1.center = (543//2, 380//2)
-            window.blit(line1,textRect1)
-            pygame.display.update()
-
-            line8 = menuFont.render('                                                                       ', True ,WHITE, BLACK)
-            textRect8 = line.get_rect()
-            textRect8.center = (543//2, 431//2)
-            window.blit(line8, textRect8)
-            pygame.display.update()
-
-            line2 = menuFont.render('      To change sudoku boards, press        ', True, WHITE, BLACK)
-            textRect2 = line2.get_rect()
-            textRect2.center = (543//2, 483//2)
-            window.blit(line2,textRect2)
-            pygame.display.update()
-
-            line3 = menuFont.render('     any number key (1-9). To solve that      ', True, WHITE, BLACK)
-            textRect3 = line3.get_rect()
-            textRect3.center = (543 // 2, 533 // 2)
-            window.blit(line3,textRect3)
-            pygame.display.update()
-
-            line4 = menuFont.render('              board, press the spacebar.           ', True, WHITE, BLACK)
-            textRect4 = line4.get_rect()
-            textRect4.center = (543 // 2, 583 // 2)
-            window.blit(line4,textRect4)
-            pygame.display.update()
-
-            line5 = menuFont.render('                                                                       ', True, WHITE, BLACK)
-            textRect5 = line5.get_rect()
-            textRect5.center = (543 // 2, 633 // 2)
-            window.blit(line5,textRect5)
-            pygame.display.update()
-
-            line6 = menuFont.render('            Press any key to continue.             ', True, WHITE, BLACK)
-            textRect6 = line6.get_rect()
-            textRect6.center = (543 // 2, 683 // 2)            
-            window.blit(line6,textRect6)
-            pygame.display.update()
-
-            line7 = menuFont.render('                                                                       ', True ,WHITE, BLACK)
-            textRect7 = line.get_rect()
-            textRect7.center = (543//2, 733//2)
-            window.blit(line7, textRect7)
-            pygame.display.update()
-
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    menu = False
-                    break
-
+        while check:
+            Intro(window)
+            check = False
 
         for event in pygame.event.get():
 
@@ -174,46 +154,63 @@ def main():
                 run = False
 
             if event.type == pygame.KEYDOWN:
-                #if event.key == pygame.K_SPACE:
-                #    board.SudokuSolveGUI()
+
+                if event.key == pygame.K_SPACE:
+
+                    if speed == 1 or speed == 2 or speed == 3:
+                        VizStart = time.time()
+                        board.SudokuSolveGUI(300)
+                        VizElapsed = (time.time() - VizStart)
+                    elif speed == 4:
+                        VizStart = time.time()
+                        board.SudokuSolveGUI(100)
+                        VizElapsed = (time.time() - VizStart)
+                    else:
+                        VizStart = time.time()
+                        board.SudokuSolveGUI(90)
+                        VizElapsed = (time.time() - VizStart)
+
+                    if int(VizElapsed) == 0:
+                        Error = True
+                        while Error:
+                            boardError(window)
+                            Error = False
+                    else:
+                        Go = True
+                        while Go:
+                            DisplayStats(window, VizElapsed)
+                            Go = False
 
                 if event.key == pygame.K_1:
+                    speed = 1
                     board.changeBoard(board1)
+                    board.update_instance()
                     pygame.display.update()
                 
                 if event.key == pygame.K_2:
+                    speed = 2
                     board.changeBoard(board2)
+                    board.update_instance()
                     pygame.display.update()
 
                 if event.key == pygame.K_3:
+                    speed = 3
                     board.changeBoard(board3)
+                    board.update_instance()
                     pygame.display.update()
 
                 if event.key == pygame.K_4:
+                    speed = 4
                     board.changeBoard(board4)
+                    board.update_instance()
                     pygame.display.update()
 
                 if event.key == pygame.K_5:
+                    speed = 5
                     board.changeBoard(board5)
+                    board.update_instance()
                     pygame.display.update()
 
-                if event.key == pygame.K_6:
-                    board.changeBoard(board6)
-                    pygame.display.update()
-
-                if event.key == pygame.K_7:
-                    board.changeBoard(board7)
-                    pygame.display.update()
-
-                if event.key == pygame.K_8:
-                    board.changeBoard(board8)
-                    pygame.display.update()
-
-                if event.key == pygame.K_9:
-                    board.changeBoard(board9)
-                    pygame.display.update()
-
-    
 
 main()
 pygame.quit()

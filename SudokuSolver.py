@@ -1,4 +1,10 @@
+from SudokuImport import *
 
+'''
+This python script takes in a Sudoku board (a list of lists)
+from the file SudokuImports.py and returns the formatted solved
+sudoku board to the command line
+'''
 
 # This function finds the next index in the Sudoku
 # (a list of lists) that contains a zero. If a zero
@@ -13,7 +19,6 @@ def findZeros(sudoku):
             if sudoku[i][j] == 0:
                 check = True
                 break
-   
 
         if check:
             break
@@ -98,68 +103,14 @@ def solveSudoku(sudoku):
 
 
 # You could try the solveSudoku function
-# on different sudoku boards by uncommenting
-# the different sudokus below. The difficulty
-# increases the further down the sudokus are.
+# on different sudoku boards from the file 
+# SudokuImports.py, just change the number of the board
+# to any number from 1-5.The difficulty increases
+# the further down the sudokus are. Make sure to 
+# run this file in the same directory as SudokuBoards.py.
 
-sudoku = [
-         [7, 8, 0, 4, 0, 0, 1, 2, 0],
-         [6, 0, 0, 0, 7, 5, 0, 0, 9],
-         [0, 0, 0, 6, 0, 1, 0, 7, 8],
-         [0, 0, 7, 0, 4, 0, 2, 6, 0],
-         [0, 0, 1, 0, 5, 0, 9, 3, 0],
-         [9, 0, 4, 0, 6, 0, 0, 0, 5],
-         [0, 7, 0, 3, 0, 0, 0, 1, 2],
-         [1, 2, 0, 0, 0, 7, 4, 0, 0],
-         [0, 4, 9, 2, 0, 6, 0, 0, 7]
-]
-
-
-'''
-sudoku = [
-         [6, 0, 0, 5, 0, 0, 9, 0, 0],
-         [8, 0, 1, 6, 0, 4, 2, 7, 0],
-         [0, 0, 0, 0, 7, 2, 6, 0, 0],
-         [0, 0, 0, 0, 8, 1, 7, 0, 4],
-         [0, 0, 4, 0, 3, 0, 1, 0, 0],
-         [0, 5, 0, 0, 0, 9, 0, 2, 3],
-         [0, 0, 0, 0, 0, 6, 0, 0, 0],
-         [0, 6, 0, 0, 0, 0, 4, 0, 0],
-         [0, 0, 0, 3, 4, 0, 5, 0, 6]
-]
-'''
-
-'''
-sudoku = [
-         [0, 0, 6, 0, 0, 0, 1, 0, 0],
-         [2, 0, 0, 7, 0, 0, 3, 0, 0],
-         [0, 5, 3, 0, 0, 0, 0, 4, 8],
-         [0, 0, 0, 0, 0, 0, 0, 0, 0],
-         [0, 3, 1, 0, 8, 0, 0, 2, 0],
-         [8, 0, 0, 0, 0, 0, 0, 9, 4],
-         [0, 0, 0, 5, 0, 1, 0, 0, 0],
-         [0, 0, 0, 0, 0, 9, 0, 0, 6],
-         [9, 6, 2, 0, 0, 0, 0, 0, 0]
-]
-'''
-
-'''
-sudoku = [
-         [0, 0, 0, 0, 0, 0, 2, 0, 0],
-         [0, 8, 0, 0, 0, 7, 0, 9, 0],
-         [6, 0, 2, 0, 0, 0, 5, 0, 0],
-         [0, 7, 0, 0, 6, 0, 0, 0, 0],
-         [0, 0, 0, 9, 0, 1, 0, 0, 0],
-         [0, 0, 0, 0, 2, 0, 0, 4, 0],
-         [0, 0, 5, 0, 0, 0, 6, 0, 3],
-         [0, 9, 0, 4, 0, 0, 0, 7, 0],
-         [0, 0, 6, 0, 0, 0, 0, 0, 0],
-]
-'''
-
-
-if solveSudoku(sudoku):
-    printSudoku(sudoku)
+if solveSudoku(board5):
+    printSudoku(board5)
 else:
     print("This sudoku has no solution")
 
