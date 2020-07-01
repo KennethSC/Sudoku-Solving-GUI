@@ -151,7 +151,7 @@ def Intro(screen):
 def DisplayStats(screen, VizTime):
     running = True
     ctr = 0
-    Viz = round(VizTime, 4)
+    Viz = int(VizTime)
 
     while running:
 
@@ -162,7 +162,7 @@ def DisplayStats(screen, VizTime):
         for i in range(len(TimeList)):
 
             if i == 1:
-                line = menuFont.render(' '*14 + 'Visualizer time: ' + str(Viz) + ' '*15, True ,WHITE, BLACK)
+                line = menuFont.render(' '*15 + 'Visualizer time: ' + str(Viz) + ' seconds       ', True ,WHITE, BLACK)
                 textRect = line.get_rect()
                 textRect.center = (X//2, Y//2)
                 screen.blit(line, textRect)

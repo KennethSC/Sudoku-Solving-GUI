@@ -162,7 +162,7 @@ def main():
 
                     if speed == 1 or speed == 2 or speed == 3:
                         VizStart = time.time()
-                        board.SudokuSolveGUI(300)
+                        board.SudokuSolveGUI(350)
                         VizElapsed = (time.time() - VizStart)
                     elif speed == 4:
                         VizStart = time.time()
