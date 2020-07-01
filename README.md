@@ -5,11 +5,9 @@ The file SudokuSolver.py is meant to solve any solvable sudoku by implementing t
 
 ## Requirements
 
-The only requirement for this project is pygame for the GUI.
-To install pygame all you have to do is run the following command (assuming you already have pip installed) in your terminal (Mac): pip install pygame
+__Pygame__
 
-If you don't have pip installed then you can follow this link that walks you through on installing it on MacOS or OSX: https://ahmadawais.com/install-pip-macos-os-x-python/ 
-
+To install pygame on Mac use this command in your terminal: pip install pygame
 
 ## Instructions
 To use the GUI all you have to do is run Solver_GUI.py on any python interpreter (I used VSCode), and to make sure that all the files above are in the same directory when running. To visualize the algorithm click on the 'SOLVE' button  and just watch the algorithm work. To try the algorithm on a new sudoku board click on buttons 'Board1' - 'Board9' with Board1 being the easiest sudoku and Board9 being the hardest.
