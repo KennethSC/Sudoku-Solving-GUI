@@ -2,7 +2,6 @@
 Run this file in the same directory
 as SudokuImport.py
 '''
-
 import pygame
 import time
 from SudokuImport import *
@@ -11,13 +10,8 @@ pygame.init()
 pygame.font.init()
 
 FPS = 30
+speed = None
 FPSCLOCK = pygame.time.Clock()
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (51, 165, 50)
-BLUE = (51, 153, 255)
-WHITE = (250, 250, 250)
-
 
 class SudoBoard():
 
@@ -54,6 +48,8 @@ class SudoBoard():
 
     def changeBoard(self,boardNum):
         self.cells = [[Cell(boardNum[i][j], i, j, self.height, self.width) for j in range(self.col)] for i in range(self.row)]
+        self.update_instance()
+        pygame.display.update()
 
 
     def ClearBoard(self, BoardNum):
@@ -172,6 +168,7 @@ class button():
             text = font.render(self.text, 1, (0,0,0))
             win.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
+
     def isOver(self, pos):
         #Pos is the mouse position or a tuple of (x,y) coordinates
         if pos[0] > self.x and pos[0] < self.x + self.width:
@@ -181,14 +178,30 @@ class button():
         return False
 
 
+    def checkBlue(self, pos):
+        if self.isOver(pos):
+            self.color = (0, 122, 199)
+        else:
+            self.color = BLUE
+
+
+    def updateBoard(self, bo, pos, velocity, boardNum):
+        global speed
+
+        if self.isOver(pos):
+            speed = velocity
+            bo.changeBoard(boardNum)
+
+
 def main():
-    global FPS, FPSCLOCK
+    global FPS, FPSCLOCK, speed
 
     window = pygame.display.set_mode((543, 640))
     pygame.display.set_caption("Sudoku Solver Via the Backtracking Algorithm")
     board = SudoBoard(9, 9, 540, 540, window)
     board.changeBoard(board1)
     board.update_instance()
+
     Button1 = button(BLUE, 0, 543, 80, 50, 'Board 1')
     Button2 = button(BLUE, 80, 543, 80, 50, 'Board 2')
     Button3 = button(BLUE, 160, 543, 80, 50, 'Board 3')
@@ -202,12 +215,12 @@ def main():
     Clear = button(RED, 320, 590, 80, 50, 'CLEAR') 
 
     run = True
-    speed = 1
 
     while run:
 
         window.fill((255,255,255))
         board.draw()
+
         Button1.drawButton(window, BLACK)
         Button2.drawButton(window, BLACK)
         Button3.drawButton(window, BLACK)
@@ -234,91 +247,30 @@ def main():
                 if Solve.isOver(MousePos):
 
                     if speed == 1 or speed == 2 or speed == 3:
-                        VizStart = time.time()
                         board.SudokuSolveGUI(350)
-                        VizElapsed = (time.time() - VizStart)
                         
-
                     elif speed == 4:
-                        VizStart = time.time()
                         board.SudokuSolveGUI(200)
-                        VizElapsed = (time.time() - VizStart)
                 
                     elif speed == 9:
-                        VizStart = time.time()
-                        board.SudokuSolveGUI(70)
-                        VizElapsed = (time.time() - VizStart)
+                        board.SudokuSolveGUI(80)
+                        
                     else:
-                        VizStart = time.time()
                         board.SudokuSolveGUI(90)
-                        VizElapsed = (time.time() - VizStart)
-                       
-                    if int(VizElapsed) == 0:
-                        board.ClearBoard(speed)
-
-                    else:
-                        Go = True
-                        while Go:
-                            DisplayStats(window, VizElapsed)
-                            Go = False
-
-                if Button1.isOver(MousePos):
-                    speed = 1
-                    board.changeBoard(board1)
-                    board.update_instance()
-                    pygame.display.update()
-                
-                if Button2.isOver(MousePos):
-                    speed = 2
-                    board.changeBoard(board2)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button3.isOver(MousePos):
-                    speed = 3
-                    board.changeBoard(board3)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button4.isOver(MousePos):
-                    speed = 4
-                    board.changeBoard(board4)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button5.isOver(MousePos):
-                    speed = 5
-                    board.changeBoard(board5)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button6.isOver(MousePos):
-                    speed = 6
-                    board.changeBoard(board6)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button7.isOver(MousePos):
-                    speed = 7
-                    board.changeBoard(board7)
-                    board.update_instance()
-                    pygame.display.update()
-                
-                if Button8.isOver(MousePos):
-                    speed = 8
-                    board.changeBoard(board8)
-                    board.update_instance()
-                    pygame.display.update()
-
-                if Button9.isOver(MousePos):
-                    speed = 9
-                    board.changeBoard(board9)
-                    board.update_instance()
-                    pygame.display.update()
-
+                        
                 if Clear.isOver(MousePos):
                     board.ClearBoard(speed)
 
+                Button1.updateBoard(board, MousePos, 1, board1)
+                Button2.updateBoard(board, MousePos, 2, board2)
+                Button3.updateBoard(board, MousePos, 3, board3)
+                Button4.updateBoard(board, MousePos, 4, board4)
+                Button5.updateBoard(board, MousePos, 5, board5)
+                Button6.updateBoard(board, MousePos, 6, board6)
+                Button7.updateBoard(board, MousePos, 7, board7)
+                Button8.updateBoard(board, MousePos, 8, board8)
+                Button9.updateBoard(board, MousePos, 9, board9)
+    
 
             if event.type == pygame.MOUSEMOTION:
                 if Solve.isOver(MousePos):
@@ -326,57 +278,21 @@ def main():
                 else:
                     Solve.color = GREEN
 
-                if Button1.isOver(MousePos):
-                    Button1.color = (0, 122, 199)
-                else:
-                    Button1.color = BLUE
-
-                if Button2.isOver(MousePos):
-                    Button2.color = (0, 122, 199)
-                else:
-                    Button2.color = BLUE
-
-                if Button3.isOver(MousePos):
-                    Button3.color = (0, 122, 199)
-                else:
-                    Button3.color = BLUE
-
-                if Button4.isOver(MousePos):
-                    Button4.color = (0, 122, 199)
-                else:
-                    Button4.color = BLUE
-
-                if Button5.isOver(MousePos):
-                    Button5.color = (0, 122, 199)
-                else:
-                    Button5.color = BLUE
-
-                if Button6.isOver(MousePos):
-                    Button6.color = (0, 122, 199)
-                else:
-                    Button6.color = BLUE
-
-                if Button7.isOver(MousePos):
-                    Button7.color = (0, 122, 199)
-                else:
-                    Button7.color = BLUE
-
-                if Button8.isOver(MousePos):
-                    Button8.color = (0, 122, 199)
-                else:
-                    Button8.color = BLUE
-
-                if Button9.isOver(MousePos):
-                    Button9.color = (0, 122, 199)
-                else:
-                    Button9.color = BLUE
-
                 if Clear.isOver(MousePos):
                     Clear.color = (139, 0, 0)
                 else:
                     Clear.color = RED
 
+                Button1.checkBlue(MousePos)
+                Button2.checkBlue(MousePos)
+                Button3.checkBlue(MousePos)
+                Button4.checkBlue(MousePos)
+                Button5.checkBlue(MousePos)
+                Button6.checkBlue(MousePos)
+                Button7.checkBlue(MousePos)
+                Button8.checkBlue(MousePos)
+                Button9.checkBlue(MousePos)
+
 
 main()
 pygame.quit()
-

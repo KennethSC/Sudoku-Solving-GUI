@@ -1,6 +1,10 @@
 import pygame
+
 BLACK = (0, 0, 0)
 WHITE = (250, 250, 250)
+RED = (255, 0, 0)
+GREEN = (51, 165, 50)
+BLUE = (51, 153, 255)
 
 # These are all the different sudoku boards that 
 # you can use in the GUI and in SudokuSolver.py.
@@ -169,51 +173,4 @@ def validMove(sudoku, x, y, num):
                 return False
 
     return True
-
-
-# Displays the time it took for the visualizer to finish
-# that sudou board
-def DisplayStats(screen, VizTime):
-    running = True
-    ctr = 0
-    Viz = int(VizTime)
-
-    while running:
-
-        menuFont = menuFont = pygame.font.Font('freesansbold.ttf', 25) 
-        X = 543
-        Y = 334
-
-        for i in range(len(TimeList)):
-
-            if i == 1:
-                line = menuFont.render(' '*15 + 'Visualizer time: ' + str(Viz) + ' seconds       ', True ,WHITE, BLACK)
-                textRect = line.get_rect()
-                textRect.center = (X//2, Y//2)
-                screen.blit(line, textRect)
-                pygame.display.update()
-                Y += 50
-
-            line = menuFont.render(TimeList[i], True ,WHITE, BLACK)
-            textRect = line.get_rect()
-            textRect.center = (X//2, Y//2)
-            screen.blit(line, textRect)
-            pygame.display.update()
-            Y += 50
-
-        for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    running = False
-                    break
-
-
-TimeList = ['                                                                       ',
-            '                                                                       ',
-            '            Press any key to continue.             ',
-            '                                                                       ']
-
-
-
-
-
 
