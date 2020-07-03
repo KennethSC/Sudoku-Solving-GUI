@@ -1,16 +1,16 @@
-import pygame
 
 BLACK = (0, 0, 0)
 WHITE = (250, 250, 250)
 RED = (255, 0, 0)
 GREEN = (51, 165, 50)
 BLUE = (51, 153, 255)
+LIGHT_GREEN = (0, 255, 0)
 
 # These are all the different sudoku boards that 
 # you can use in the GUI and in SudokuSolver.py.
 # Feel free to test and add any other Sudoku boards.
 # They vary in difficulty with board1 being the easiest 
-# and board5 being the hardest
+# and board9 being the hardest
 
 board1 = [
          [0, 2, 0, 0, 5, 3, 7, 4, 8],
@@ -126,9 +126,8 @@ board9 = [
 
 
 
-# Below are helper functions that are used in
-# the GUI as well as two functions from 
-# SudokuSolver.py that are also used in the GUI.
+# Below two functions from 
+# SudokuSolver.py that are used in the GUI.
 
 
 # This function finds the next index in the Sudoku

@@ -33,6 +33,7 @@ def findZeros(sudoku):
 
 # Prints out the Sudoku board
 # in a neat and readable way
+# to the command line
 def printSudoku(sudoku):
     print("\n")
 
