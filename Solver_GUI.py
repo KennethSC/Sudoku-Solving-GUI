@@ -10,6 +10,7 @@ FPS = 30
 speed = 1
 FPSCLOCK = pygame.time.Clock()
 
+
 class SudoBoard():
 
     def __init__(self, row, col, height, width, screen):
@@ -111,6 +112,7 @@ class SudoBoard():
                 pygame.time.delay(speed)
 
         return status
+
 
 
 class Cell:
@@ -238,9 +240,11 @@ def main():
     run = True
 
     while run:
+
         # Draw out the Sudoku Board with a white background
         window.fill(WHITE)
         board.draw_Sudo_Board()
+
         # Draw buttons onto screen
         Button1.make_Button(window, BLACK, 17)
         Button2.make_Button(window, BLACK, 17)
@@ -258,6 +262,7 @@ def main():
         FPSCLOCK.tick(FPS)
 
         for event in pygame.event.get():
+            # Gets the current position of the mouse
             MousePos = pygame.mouse.get_pos()
 
             if event.type == pygame.QUIT:
@@ -265,6 +270,7 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
 
+                # Checks if the solve button was pressed
                 if Solve.if_Hovering(MousePos):
 
                     if speed == 1 or speed == 2 or speed == 3 or speed == 4:
@@ -274,9 +280,11 @@ def main():
                     else:
                         board.SudokuSolveGUI(100)
                         
+                # Checks if Clear button was pressed
                 if Clear.if_Hovering(MousePos):
                     board.ClearBoard(speed)
                 
+                # Checks if user pressed button to change boards
                 Button1.if_Clicked(board, MousePos, 1, board1)
                 Button2.if_Clicked(board, MousePos, 2, board2)
                 Button3.if_Clicked(board, MousePos, 3, board3)
@@ -288,19 +296,20 @@ def main():
                 Button9.if_Clicked(board, MousePos, 9, board9)
     
             if event.type == pygame.MOUSEMOTION:
+
                 # Checks if mouse is hovering over each button
                 Clear.change_Button_Color(MousePos, (139, 0, 0), RED)
                 Solve.change_Button_Color(MousePos, (0, 100, 0), GREEN)
                 
-                Button1.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button2.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button3.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button4.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button5.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button6.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button7.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button8.change_Button_Color(MousePos, (0, 122, 199), BLUE)
-                Button9.change_Button_Color(MousePos, (0, 122, 199), BLUE)
+                Button1.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button2.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button3.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button4.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button5.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button6.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button7.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button8.change_Button_Color(MousePos, DARK_BLUE, BLUE)
+                Button9.change_Button_Color(MousePos, DARK_BLUE, BLUE)
 
 
 main()

@@ -1,10 +1,11 @@
 
-BLACK = (0, 0, 0)
-WHITE = (250, 250, 250)
 RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 GREEN = (51, 165, 50)
 BLUE = (51, 153, 255)
+WHITE = (250, 250, 250)
 LIGHT_GREEN = (0, 255, 0)
+DARK_BLUE = (0, 122, 199)
 
 # These are all the different sudoku boards that 
 # you can use in the GUI and in SudokuSolver.py.
