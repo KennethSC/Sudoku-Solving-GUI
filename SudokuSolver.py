@@ -110,10 +110,10 @@ def solveSudoku(sudoku):
 # the further down the sudokus are. Make sure to 
 # run this file in the same directory as SudokuBoards.py.
 
-if solveSudoku(board4):
-    printSudoku(board4)
-else:
-    print("This sudoku has no solution")
-
-
+if __name__ == '__main__':
+    
+    if solveSudoku(board4):
+        printSudoku(board4)
+    else:
+        print("This sudoku has no solution")
 

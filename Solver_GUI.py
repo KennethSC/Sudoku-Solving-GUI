@@ -312,5 +312,6 @@ def main():
                 Button9.change_Button_Color(MousePos, DARK_BLUE, BLUE)
 
 
-main()
-pygame.quit()
+if __name__ == '__main__':
+    main()
+    pygame.quit()
